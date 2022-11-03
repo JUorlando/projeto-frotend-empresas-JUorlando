@@ -24,8 +24,6 @@ export function eventLogin () {
 
     const local = document.querySelector(".form-inputs-login")
 
-    console.log(local)
-
     local.addEventListener("submit", async (event) => {
 
         event.preventDefault()

@@ -1,0 +1,37 @@
+.form-buttons{
+    width: 146px;
+    height: 48px;
+    display: flex;
+    gap: 5px;
+}
+
+.buttons-eye{
+    width: 44px;
+    height: 40px;
+    background-image: url(../img/view.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: #fff;
+}
+
+.buttons-edit{
+    width: 36px;
+    height: 36px;
+    background-image: url(../img/edit.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: #fff;
+}
+
+.buttons-delete{
+    width: 34px;
+    height: 34px;
+    background-image: url(../img/delete.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: #fff;
+
+}

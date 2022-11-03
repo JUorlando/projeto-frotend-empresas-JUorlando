@@ -1,7 +1,5 @@
 import { eventLogin } from "../../src/scripts/events.js";
-import { getLogin } from "../../src/scripts/request.js";
-
-
-await getLogin()
+import { getLogin, getAdmAuth } from "../../src/scripts/request.js";
 
 eventLogin()
+await getAdmAuth()
