@@ -1,40 +1,66 @@
-import { renderSelect } from "./render.js";
-import { getDepartaments } from "./request.js";
+import { renderSelect, renderSelectAdmin } from "./render.js";
+import { getDepartaments, getDepartamentsAll } from "./request.js";
 
-export async function filterEvent () {
+export async function filterEvent() {
 
     const mainFilter = document.querySelector(".ul-cards")
     const filterSelect = document.querySelector(".select")
 
 
     let getAll = await getDepartaments()
-    
+
     filterSelect.addEventListener("change", (event) => {
-        
-        console.log(filterSelect.value)
 
-            event.preventDefault()
-    
-            mainFilter.innerHTML = ''
-            const filter = filterSelect.value
-    
-            console.log(filter)
+        event.preventDefault()
 
-    
-            if(filter === "Selecionar Departamento") {
-    
-                renderSelect(getAll)
-    
-            } else {
+        mainFilter.innerHTML = ''
+        const filter = filterSelect.value
 
-                
-                const filtredDescription = getAll.filter(element => element.sectors.description.includes(filter))
 
-                console.log(filtredDescription)
-                
-                renderSelect(filtredDescription)
+        if (filter === "Selecionar Departamento") {
 
-            }
+            renderSelect(getAll)
 
-        }) 
+        } else {
+
+
+            const filtredDescription = getAll.filter(element => element.sectors.description.includes(filter))
+
+            renderSelect(filtredDescription)
+
+        }
+
+    })
+}
+
+export async function filterEventCompany() {
+
+    const mainFilter = document.querySelector(".ul-cards-admin")
+    const filterSelect = document.querySelector(".select-company")
+
+
+    let getAll = await getDepartamentsAll()
+
+    filterSelect.addEventListener("change", (event) => {
+
+        event.preventDefault()
+
+        mainFilter.innerHTML = ''
+        const filter = filterSelect.value
+
+
+        if (filter === "Selecionar Departamento") {
+
+            renderSelectAdmin(getAll)
+
+        } else {
+
+
+            const filtredDescription = getAll.filter(element => element.companies.name.includes(filter))
+
+            renderSelectAdmin(filtredDescription)
+
+        }
+
+    })
 }

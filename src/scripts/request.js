@@ -1,4 +1,5 @@
-import { renderSelectUsers } from "./render.js"
+import { getLocalStorageToken } from "./localSotrage.js"
+import { renderSelect, renderSelectAdmin, renderSelectUsers } from "./render.js"
 import { toast } from "./toast.js"
 
 const baseUrl = "http://localhost:6278/"
@@ -6,7 +7,7 @@ const baseUrl = "http://localhost:6278/"
 export async function getDepartaments() {
 
     try {
-        const request = await fetch(baseUrl + "companies", {
+        const request = await fetch("http://localhost:6278/companies", {
             method: "GET",
             header: {
                 "Content-type": "application/json",
@@ -16,8 +17,6 @@ export async function getDepartaments() {
         if (request.ok) {
 
             const response = await request.json()
-
-            localStorage.setItem("dataCompany", JSON.stringify(response))
 
             return response
 
@@ -31,7 +30,7 @@ export async function getDepartaments() {
 export async function getCadastro(body) {
 
     try {
-        const request = await fetch(baseUrl + "auth" + "/register", {
+        const request = await fetch("http://localhost:6278/auth/register", {
 
             method: "POST",
             headers: {
@@ -48,7 +47,7 @@ export async function getCadastro(body) {
 
             setTimeout(() => {
 
-                window.location.replace("./login/index.html")
+                window.location.replace("../../pages/login/login.html")
 
                 return response
 
@@ -71,7 +70,7 @@ export async function getLogin(body) {
     console.log(body)
 
     try {
-        const request = await fetch(baseUrl + "auth" + "/login", {
+        const request = await fetch("http://localhost:6278/auth/login", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -83,13 +82,9 @@ export async function getLogin(body) {
 
             const response = await request.json()
 
-            console.log(response.token)
-
             localStorage.setItem("userToken", response.token)
 
             getAdmAuth(response.token)
-
-            getUsers(response.token)
 
             toast("Sucesso!")
 
@@ -110,7 +105,7 @@ export async function getLogin(body) {
 
 export async function getAdmAuth(token) {
 
-    await fetch(baseUrl + "auth/" + "validate_user", {
+    await fetch("http://localhost:6278/auth/validate_user", {
         method: "GET",
         headers: {
             "Content-type": "application/json",
@@ -125,42 +120,35 @@ export async function getAdmAuth(token) {
             }
         })
         .then(res => {
-            console.log(res)
-            if(res.is_admin == true){
+            if (res.is_admin == true) {
                 localStorage.removeItem("typeUser", "users")
                 localStorage.setItem("typeUser", "adm")
-                // window.location.assign("/pages/adm/admin.html")
+                window.location.assign("/pages/adm/admin.html")
             } else {
                 localStorage.removeItem("typeUser", "adm")
                 localStorage.setItem("typeUser", "users")
-                // window.location.assign("/pages/users/users.html")
+                window.location.assign("/pages/users/users.html")
             }
         })
 
 }
 
-export async function getUsers(token) {
-
-    console.log(token)
+export async function getUsers() {
 
     try {
-        const request = await fetch(baseUrl + "users", {
+
+        const request = await fetch("http://localhost:6278/users", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "Authentication": `Bearer ${token}`,
-            }
+                "Authorization": `Bearer ${localStorage.getItem("userToken")}`,
+            },
+
         })
 
-        console.log(request)
-
         if (request.ok) {
-            console.log(request)
+
             const response = await request.json()
-
-            console.log(response)
-
-            localStorage.setItem("UsersData", JSON.stringify(response))
 
             return response
 
@@ -169,4 +157,174 @@ export async function getUsers(token) {
     catch (err) {
         console.log(err)
     }
+
+}
+
+export async function getUsersOutOfWork() {
+
+    try {
+
+        const request = await fetch("http://localhost:6278/admin/out_of_work", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("userToken")}`,
+            },
+
+        })
+
+        if (request.ok) {
+
+            const response = await request.json()
+
+            return response
+
+        }
+    }
+    catch (err) {
+        console.log(err)
+    }
+
+}
+
+export async function getDepartamentsAll() {
+
+
+    try{
+
+        const request = await fetch("http://localhost:6278/departments", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("userToken")}`,
+            },
+        })
+
+        if (request.ok) {
+
+            const response = await request.json()
+
+            return response
+
+        }
+    }
+    catch (err) {
+        console.log(err)
+    }
+
+    }
+
+export async function EditDepartments(body, id) {
+
+    await fetch(`${baseUrl}departments/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("userToken")}`,
+        },
+        body: JSON.stringify(body)
+    })
+        .then(res => res.json())
+        .then(res => renderSelectAdmin(res))
+}
+
+
+export async function deleteDepartments(id) {
+
+    console.log(id)
+
+    await fetch(`${baseUrl}departments/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("userToken")}`,
+        },
+    })
+        .then(res => res.json())
+        .then(res => console.log(res))
+}
+
+export async function editUsers(body, id) {
+
+    await fetch(`${baseUrl}admin/update_user/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("userToken")}`,
+        },
+        body: JSON.stringify(body)
+    })
+        .then(res => res.json())
+        .then(res => console.log(res))
+
+}
+
+
+export async function deleteUsers(id) {
+
+    await fetch(`${baseUrl}admin/delete_user/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("userToken")}`,
+        },
+    })
+        .then(res => res.json())
+        .then(res => console.log(res))
+}
+
+export async function creatDepartment (body) {
+
+    console.log(body)
+
+    try {
+
+        const request = await fetch(`${baseUrl}departments`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("userToken")}`,
+            },
+            body: JSON.stringify(body)
+        })
+
+        if (request.ok) {
+
+            const response = await request.json()
+
+            return response
+
+        }
+    }
+    catch (err) {
+        console.log(err)
+    }
+
+}
+
+export async function hire (body) {
+
+    try {
+
+        const request = await fetch("http://localhost:6278/departments/hire/", {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("userToken")}`,
+            },
+            body: JSON.stringify(body)
+        })
+
+        if (request.ok) {
+
+            const response = await request.json()
+
+            return response
+
+        }
+    }
+    catch (err) {
+        console.log(err)
+    }
+
 }

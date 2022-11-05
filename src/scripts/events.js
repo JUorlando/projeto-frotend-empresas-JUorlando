@@ -1,4 +1,4 @@
-import { getCadastro, getLogin } from "./request.js"
+import { creatDepartment, getCadastro, getLogin } from "./request.js"
 
 export function eventCadastro () {
 
@@ -39,3 +39,25 @@ export function eventLogin () {
 
     })
 }
+
+export async function eventCreat () {
+
+    const local = document.querySelector(".form-modal-inputs")
+
+    local.addEventListener("submit", async (event) => {
+
+        event.preventDefault()
+
+        const body = {
+
+            name:event.target.children[1].value,
+            description:event.target.children[2].value,
+            company_uuid:event.target.children[3].value
+  
+        }
+        await creatDepartment(body)
+
+    })
+}
+
+eventCreat()

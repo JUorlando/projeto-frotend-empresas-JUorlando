@@ -71,7 +71,11 @@
         top: 3.688;
     }
 
-    .btn-login{
+    .dropdown-content:hover{
+        display: flex;
+    }
+
+    .btn-home{
         width: 9.326rem;
         height: 3rem;
         background-color: #fff;
