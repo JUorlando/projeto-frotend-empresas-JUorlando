@@ -1,6 +1,8 @@
-import { renderUserInfo } from "../../src/scripts/renderUser.js";
+import { renderCoworks, renderUserInfo } from "../../src/scripts/renderUser.js";
 
 await renderUserInfo()
+
+await renderCoworks()
 
 const buttonLogout = document.querySelector(".btn-logout-user")
  

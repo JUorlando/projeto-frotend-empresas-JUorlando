@@ -3,8 +3,6 @@ import { filterEvent } from "./filter.js";
 
 export async function renderSelect (elt) {
 
-    console.log(elt)
-
 
     elt.forEach(element => {
 

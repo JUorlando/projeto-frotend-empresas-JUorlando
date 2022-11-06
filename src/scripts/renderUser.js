@@ -10,6 +10,7 @@ export async function renderUserInfo() {
 
     let tagDiv = document.createElement("div")
     let tagName = document.createElement("h2")
+    let tagDiv2 = document.createElement("div")
     let tagEmail = document.createElement("p")
     let tagNivel = document.createElement("p")
     let tagTipo = document.createElement("p")
@@ -18,6 +19,7 @@ export async function renderUserInfo() {
 
     tagDiv.classList.add("div-info")
     tagName.classList.add("name-info")
+    tagDiv2.classList.add("div-info-2")
     tagEmail.classList.add("email-info")
     tagNivel.classList.add("nivel-info")
     tagTipo.classList.add("tipo-info")
@@ -41,13 +43,14 @@ export async function renderUserInfo() {
     })
 
     tagName.innerText = users.username
-    tagEmail.innerText = users.email
+    tagEmail.innerText = `Email: ${users.email}`
     tagNivel.innerText = users.professional_level
     tagTipo.innerText = users.kind_of_work
 
     tagForm.append(tagEdit)
-    tagDiv.append(tagName, tagEmail, tagNivel, tagTipo, tagForm)
-    tagSection.append(tagDiv)
+    tagDiv2.append(tagEmail, tagNivel, tagTipo)
+    tagDiv.append(tagName, tagDiv2 )
+    tagSection.append(tagDiv, tagForm)
 
 }
 
@@ -55,7 +58,7 @@ export async function renderCoworks () {
 
     const cowork = await getCoWorks(localStorage.getItem("userToken"))
 
-    console.log(cowork)
+    const noWork = document.querySelector(".h1-cowork")
 
     cowork.forEach(element => {
 
@@ -70,9 +73,10 @@ export async function renderCoworks () {
         tagDiv.classList = "div-cowork"
         tagCompanyName.classList = "company-cowork"
         tagDepartmentName.classList = "department-cowork"
+        noWork.classList.add("no-work")
         
-        tagCompanyName.innerText = element.name
-        tagDepartmentName.innerText = element.description
+        tagCompanyName.innerText = `${element.name} `
+        tagDepartmentName.innerText = ` - ${element.description}`
         
         users.forEach(elt=> {
             
@@ -90,14 +94,13 @@ export async function renderCoworks () {
             tagName.innerText = elt.username
             tagPosition.innerText = elt.professional_level
     
-    
-            tagUl.append(tagLi, tagName, tagPosition)
-            tagSection.append(tagDiv, tagCompanyName, tagDepartmentName, tagUl)
+            tagLi.append(tagName, tagPosition)
+            tagUl.append(tagLi)
+            tagDiv.append(tagCompanyName, tagDepartmentName,)
+            tagSection.append(tagDiv, tagUl)
         });
 
         
     });
 }
-
-await renderCoworks()
 

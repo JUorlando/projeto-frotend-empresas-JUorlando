@@ -12,11 +12,11 @@ export const editPost = (description, id) => {
         <section id="modal-container" class="modal-container">
         <div class="big-box">
         <div class="div-modal">
-        <h2 class="title-modal">Editar Departamento</h2>
         <button id="close-modal" class="close-modal" type="button">X</button>
         </div>
+        <h2 class="title-modal">Editar Departamento</h2>
         <div class="form-modal-inputs">
-        <input class="title" placeholder="Digite seu titulo aqui..."  value="${description}" name="description">
+        <input class="title-description" placeholder="Digite seu titulo aqui..."  value="${description}" name="description">
         <button id="btn-editar" class="button-modal-2" type="submit">Editar o departamento</button>
         </div>
         </div>
@@ -243,8 +243,6 @@ export const editUser = (modalidade, nivel, id) => {
 
 export const deleteUser = (name, id) => {
 
-    console.log(id)
-
     const formulario = document.createElement("form")
     formulario.classList.add("formbase")
 
@@ -255,7 +253,7 @@ export const deleteUser = (name, id) => {
     <button class="close-modal-delete">X</button>
     </div>
     <div class="div-text-modal-delete">
-    <h3 class="title-delete">Realmente deseja remover o usuário ${name}?</h3>
+    <h3 class="title-delete-2">Realmente deseja remover o usuário ${name}?</h3>
     </div>
     <div class="form-buttons-modal-delete">
     <button id="btn-excluir" class="button-modal-2-delete" type="submit">Confirmar</button>

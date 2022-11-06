@@ -1,8 +1,303 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    font-family: 'Inter', sans-serif;
+}
+
+.header{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+
+}
+
+.div-title{
+    width: 203.36px;
+    height: 21.34px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 4px;
+    padding-left: 10px;
+}
+
+.img-header{
+    width: 16px;
+    height: 16px;
+}
+
+.h1{
+    font-size: medium;
+}
+
+.div-buttons{
+    width: 9.326rem;
+    height: 3rem;
+    padding-right: 10px;
+}
+
+.btn-logout{
+    width: 9.326rem;
+    height: 3rem;
+    background-color: #fff;
+    color: #4200FF;
+    border: solid 1px #4200FF;
+}
+
+.app{
+    width: 1182px;
+    height: 947px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding-top: 60px;
+}
+
+.div-select{
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
+
+.h1-depart{
+    font-size: 23px;
+}
+
+.select-company{
+    width: 282px;
+    height: 32px;
+    border: 1px solid;
+    border-radius: 15px;
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.btn-open{
+    width: 150px;
+    height: 48px;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4200FF;
+    color: #fff;
+    border: solid 1px #4200FF;
+}
+
+.btn-open > span{
+    font-size: 40px;
+    position: relative;
+    right: 30px;
+}
+
+.dialog-1{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+}
+
+.modal-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+
+}
+
+.title-description{
+    width: 396px;
+    height: 113px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.big-box{
+    width: 406px;
+    height: 326px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 12px;
+    border: solid 1px ;
+    background-color: #fff;
+    margin: 200px auto;
+}
+
+.div-modal{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.close-modal{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    background-color: #fff;
+}
+
+.form-modal-inputs{
+    width: 365px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    align-items: center;
+    padding-left: 20px;
+    gap: 12px;
+    position: relative;
+    bottom: 15px;
+}
+
+.title-modal{
+    width: 400px;
+    height: 42px;
+}
+
+.title{
+    width: 400px;
+    height: 42px;
+}
+
+.select-company-modal{
+    width: 400px;
+    height: 42px;
+}
+
+.button-modal-2{
+    width: 400px;
+    height: 42px;
+    border: 1px solid #4200ff;
+    background-color: #4200FF;
+    color: #fff;
+}
+
+.modal-container-delete{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+}
+
+.big-box-delete{
+    width: 433px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 12px;
+    border: solid 1px ;
+    background-color: #fff;
+    margin: 200px auto;
+}
+
+.div-modal-delete{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.close-modal-delete{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    background-color: #fff;
+}
+
+.title-delete{
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+.title-delete-2{
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+    padding-left: 20px;
+}
+
+.form-buttons-modal-delete{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.button-modal-2-delete{
+    width: 400px;
+    height: 42px;
+    border: 1px solid #4BA036;
+    background-color: #4BA036;
+    color: #fff;
+}
+
+.section-cards{
+    width: 100%;
+    height: 385px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.ul-cards-admin{
+    width: 100%;
+    height: 380px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 200px 200px;
+    background-color: #F8F8F8;
+    padding-top: 20px;
+    list-style: none;
+    overflow: scroll;
+}
+
+.li-card-admin{
+    width: 289px;
+    height: 196px;
+    background-color: #fff;
+    margin: 20px;
+    border-bottom: solid 1px #4200ff;
+    padding: 10px;
+}
+
 .form-buttons{
     width: 146px;
     height: 48px;
     display: flex;
     gap: 5px;
+    padding-left: 100px;
+    padding-top: 10px;
 }
 
 .buttons-eye{
@@ -34,4 +329,143 @@
     border: none;
     background-color: #fff;
 
+}
+
+.section-cards-users{
+    width: 100%;
+    height: 385px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.ul-cards-users{
+    width: 742px;
+    height: 380px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0px 200px;
+    background-color: #F8F8F8;
+    list-style: none;
+    overflow: scroll;
+}
+
+.li-card-users{
+    width: 289px;
+    height: 196px;
+    background-color: #fff;
+    margin: 20px;
+    border-bottom: solid 1px #4200ff;
+    padding: 10px;
+}
+
+.dialog-2{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+}
+
+.big-box-acess{
+    width: 757px;
+    height: 627px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 12px;
+    border: solid 1px;
+    background-color: #fff;
+    margin: 200px auto;
+}
+
+.div-modal-acess{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.close-modal-2{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    background-color: #fff;
+}
+
+.form-modal-inputs-acess{
+    width: 50%;
+    height: 300px;
+}
+
+.formbase{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 30px;
+}
+
+.form-hire{
+    width: 50%;
+    height: 100px;
+    position: relative;
+    left: 300px;
+    bottom: 58px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.select-usuario{
+    width: 422px;
+    height: 52px;
+    padding: 10px;
+}
+
+.btn-hire{
+    width: 147px;
+    height: 42px;
+    border: 1px solid #4BA036;
+    background-color: #4BA036;
+    color: #fff;
+    position: relative;
+    left: 274px;
+}
+
+.div-demitir{
+    width: 100%;
+}
+
+.ul-cards-users-2{
+    display: flex;
+    justify-content: space-around;
+    background-color: #F8F8F8;
+    list-style: none;
+    overflow: scroll;
+}
+
+.li-card-demitir{
+    width: 289px;
+    height: 196px;
+    background-color: #fff;
+    margin: 20px;
+    border-bottom: solid 1px #4200ff;
+    padding: 10px;
+}
+
+.button-card-demitir{
+    width: 147px;
+    height: 48px;
+    color: #CE4646;
+    border: solid 1px #CE4646;
+    margin-top: 10px;
 }

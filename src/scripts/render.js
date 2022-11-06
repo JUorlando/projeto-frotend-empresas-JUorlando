@@ -47,8 +47,6 @@ export async function renderSelectUserModal() {
 
     const users = await getUsersOutOfWork(localStorage.getItem("userToken"))
 
-    console.log(users)
-
     users.forEach(element => {
 
         const tagSelect = document.querySelector(".select-usuario")
@@ -65,11 +63,9 @@ export async function renderSelectUserModal() {
     });
 }
 
-export async function renderSelectAdmin() {
+export async function renderSelectAdmin(itens) {
 
-    const department = await getDepartamentsAll(localStorage.getItem("userToken"))
-
-    department.forEach(element => {
+    itens.forEach(element => {
 
         const tagUl = document.querySelector(".ul-cards-admin")
 
@@ -112,6 +108,19 @@ export async function renderSelectAdmin() {
 
             btnHire.id = tagEye.id
 
+            btnHire.addEventListener("click", (event) => {
+
+                event.preventDefault()
+
+                toast("Sucesso!", "Informações salvas com sucesso.")
+
+                setTimeout(() => {
+        
+                    window.location.assign("../../pages/adm/admin.html")
+        
+                }, 500)
+            })
+
 
             const users = await getUsers(localStorage.getItem("userToken"))
 
@@ -140,7 +149,7 @@ export async function renderSelectAdmin() {
                     tagCompany.innerText = element.companies.name
                     tagDescription.innerText = element.description
 
-                    tagDemitir.innerText = "Demitir"
+                    tagDemitir.innerText = "Desligar"
 
                     tagDemitir.id = elt.uuid
 
@@ -151,8 +160,8 @@ export async function renderSelectAdmin() {
                         toast("Sucesso!", "Funcionário demitido.")
                     })
 
-                    tagDiv.append(tagName, tagDescription, tagCompany)
-                    tagLi.append(tagDiv, tagDemitir)
+                    tagDiv.append(tagName, tagDescription, tagCompany, tagDemitir)
+                    tagLi.append(tagDiv)
                     tagUl.append(tagLi)
 
                 }

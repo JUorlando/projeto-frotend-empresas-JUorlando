@@ -425,7 +425,7 @@ export async function getCoWorks() {
 
             return response
 
-        }
+        } 
     }
     catch (err) {
         console.log(err)

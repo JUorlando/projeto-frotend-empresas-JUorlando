@@ -21,58 +21,58 @@
             <button id="logout" class="btn-logout">Logout</button>
         </div>
     </header>
-    <section class="app">
-        <div>
-            <h1>Departamentos</h1>
+    <main class="app">
+        <div class="div-select">
+            <h1 class="h1-depart">Departamentos</h1>
             <select class="select-company">
                 <option class="options" value="">Selecionar Empresa</option>
             </select>
-            <button class="btn-open">Criar</button>
+            <button class="btn-open"> <span>+</span> Criar</button>
         </div>
-    </section>
-    <dialog id="modal-container" class="dialog-1">
-        <div class="big-box">
-            <div class="div-modal">
-                <button id="close-modal" class="close-modal" type="button">X</button>
+        <dialog id="modal-container" class="dialog-1">
+            <div class="big-box">
+                <div class="div-modal">
+                    <button id="close-modal" class="close-modal" type="button">X</button>
+                </div>
+                <form class="form-modal-inputs">
+                    <h2 class="title-modal">Criar Departamento</h2>
+                    <input class="title" placeholder="Nome do Departamento" value="" name="name">
+                    <input class="title" placeholder="Descrição" value="" name="description">
+                    <select class="select-company-modal">
+                        <option class="options-modal" value="">Selecionar Empresa</option>
+                    </select>
+                    <button id="btn-criar" class="button-modal-2" type="submit">Criar Departamento</button>
+                </form>
             </div>
-            <form class="form-modal-inputs">
-                <h2 class="title-modal">Criar Departamento</h2>
-                <input class="title" placeholder="Nome do Departamento" value="" name="name">
-                <input class="title" placeholder="Descrição" value="" name="description">
-                <select class="select-company-modal">
-                    <option class="options-modal" value="">Selecionar Empresa</option>
-                </select>
-                <button id="btn-criar" class="button-modal-2" type="submit">Criar Departamento</button>
-            </form>
-        </div>
-    </dialog>
-    <dialog id="modal-container" class="dialog-2">
-        <div class="big-box-acess">
-            <div class="div-modal-acess">
-                <button id="close-acess" class="close-modal-2" type="button">X</button>
-            </div>
-            <div class="form-modal-inputs-acess">
-            </div>
-            <form class="form-hire">
-                <select class="select-usuario">
-                    <option class="options" value="">Selecionar Usuário</option>
-                </select>
-                <button class="btn-hire">Contratar</button>
-            </form>
-            <div>
-                <ul class="ul-cards-users-2">
-                </ul>
-            </div>
-    </dialog>
-    <section class="section-cards">
-        <ul class="ul-cards-admin">
-        </ul>
-    </section>
-    <section>
-        <h1>Usuários Cadastrados</h1>
-        <ul class="ul-cards-users">
-        </ul>
-    </section>
+        </dialog>
+        <dialog id="modal-container" class="dialog-2">
+            <div class="big-box-acess">
+                <div class="div-modal-acess">
+                    <button id="close-acess" class="close-modal-2" type="button">X</button>
+                </div>
+                <div class="form-modal-inputs-acess">
+                </div>
+                <form class="form-hire">
+                    <select class="select-usuario">
+                        <option class="options" value="">Selecionar Usuário</option>
+                    </select>
+                    <button class="btn-hire">Contratar</button>
+                </form>
+                <div class="div-demitir">
+                    <ul class="ul-cards-users-2">
+                    </ul>
+                </div>
+        </dialog>
+        <section class="section-cards">
+            <ul class="ul-cards-admin">
+            </ul>
+        </section>
+        <section class="section-cards-users">
+            <h1>Usuários Cadastrados</h1>
+            <ul class="ul-cards-users">
+            </ul>
+        </section>
+    </main>
 </body>
 
 </html>

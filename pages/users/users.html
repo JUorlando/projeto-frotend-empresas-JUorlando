@@ -5,8 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../src/stylle/home.css">
-    <link rel="stylesheet" href="../../src/stylle/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../src/stylle/users.css">
+    <link rel="stylesheet" href="../../src/stylle/modal.css">
     <script defer type="module" src="/pages/users/users.js"></script>
     <title>Pagina Usuário</title>
 </head>
@@ -15,17 +20,19 @@
     <header class="header">
         <div class="div-title">
             <img class="img-header" src="../../src/img/icon.png" alt="icone">
-            <h1 class="h1">Kenzie Empresas</h1>
+            <h1 class="h1-header">Kenzie Empresas</h1>
         </div>
-        <div class="div-buttons">
+        <div class="div-buttons-header">
             <button id="logout" class="btn-logout-user">Logout</button>
         </div>
     </header>
     <section class="section-info">
     </section>
     <section class="section-cowork">
-        <ul class="ul-cowork"></ul>
-        <h1>Você Ainda não foi contratado</h1>
+        <ul class="ul-cowork">
+            <h1 class="h1-cowork">"Você ainda não foi contratado!"</h1>
+        </ul>
     </section>
 </body>
+
 </html>
