@@ -1,5 +1,7 @@
-import { EditDepartments,  deleteDepartments, getUsers, editUsers, deleteUsers, hire} from "./request.js"
-import { renderSelectAdmin, renderSelectUserModal, renderSelectUsers } from "./render.js"
+import { EditDepartments,  deleteDepartments, editUsers, deleteUsers, newUserInfo} from "./request.js"
+import { renderSelectAdmin, renderSelectUsers } from "./render.js"
+import { renderUserInfo } from "./renderUser.js"
+import { toast } from "./toast.js"
 
 export const editPost = (description, id) => {
     console.log(description)
@@ -25,7 +27,7 @@ export const editPost = (description, id) => {
 
     btnEdit.addEventListener("click", () => {
 
-        localStorage.removeItem("AllDepartaments")
+        toast("Sucesso!", "Informações salvas com sucesso.")
 
         setTimeout(() => {
 
@@ -96,6 +98,8 @@ export const deleteForm = (name, id) => {
 
     btnDelete.addEventListener("click", async() => {
 
+        toast("Sucesso!", "Informações salvas com sucesso.")
+
         setTimeout(() => {
 
             window.location.assign("../../pages/adm/admin.html")
@@ -134,7 +138,7 @@ export const acessForm = ( name, description, company, id ) => {
     formulario.classList.add("formbase")
 
     formulario.innerHTML = `
-        <h2 id="h2-acess">${name}</h2>
+        <h2 id="h2-acess" >${name}</h2>
         <p id="p-acess">${description}</p>
         <p>${company}</p>
     `
@@ -190,6 +194,8 @@ export const editUser = (modalidade, nivel, id) => {
     const btnEdit = formulario.querySelector("#btn-editar")
 
     btnEdit.addEventListener("click", () => {
+
+        toast("Sucesso!", "Informações salvas com sucesso.")
 
         setTimeout(() => {
 
@@ -262,6 +268,8 @@ export const deleteUser = (name, id) => {
 
     btnDelete.addEventListener("click", async() => {
 
+        toast("Sucesso!", "Informações salvas com sucesso.")
+
         setTimeout(() => {
 
             window.location.assign("../../pages/adm/admin.html")
@@ -290,42 +298,72 @@ export const deleteUser = (name, id) => {
     return formulario
 }
 
-// export const formHire = (username, nivel, company, userId,  departmentid) => {
+export const formEditUser = (username, email, password) => {
 
-//     const formulario = document.createElement("form")
-//     formulario.classList.add("formbase")
+    const formulario = document.createElement("form")
+    formulario.classList.add("formbase")
 
-//     formulario.innerHTML = `
-//         <li>
-//         <h2>${username}</h2>
-//         <p>${nivel}</p>
-//         <p>${company}</p>
-//         <button>Desligar</button>
-//         </li>
-//     `
+    formulario.innerHTML = `
+        <section id="modal-container" class="modal-container">
+        <div class="big-box">
+        <div class="div-modal">
+        <h2 class="title-modal">Editar Perfil</h2>
+        <button id="close-modal" class="close-modal" type="button">X</button>
+        </div>
+        <div class="form-modal-inputs">
+        <input class="title" placeholder="Seu nome"  value="${username}" name="username">
+        <input class="title" type="password" placeholder="Sua senha"  value="${password}" name="password">
+        <input class="title" placeholder="Seu e-mail"  value="${email}" name="email">
+        <button id="btn-editar" class="button-modal-2" type="submit">Editar perfil</button>
+        </div>
+        </div>
+        </section>
+    `
 
-//     formulario.addEventListener("submit", async (event) => {
+    const btnEdit = formulario.querySelector("#btn-editar")
 
-//         event.preventDefault()
+    btnEdit.addEventListener("click", () => {
 
-//         const inputs = [...event.target]
+        toast("Sucesso!", "Informações salvas com sucesso.")
 
-//         console.log(inputs)
+        setTimeout(() => {
 
-//         const post = {}
+            window.location.assign("../../pages/users/users.html")
+            
 
-//         console.log(post)
+        }, 500)
 
-//         inputs.forEach(({ name, value }) => {
+    })
 
-//             if (name) {
-//                 post[name] = value
-//             }
-//         })
 
-//         await hire()
-//         await renderSelectUserModal()
-//     })
+    const btnClose = formulario.querySelector("#close-modal")
 
-//     return formulario
-// }
+    btnClose.addEventListener("click", function () {
+
+
+        formulario.remove()
+    })
+
+    formulario.addEventListener("submit", async (event) => {
+
+        event.preventDefault()
+
+        const inputs = [...event.target]
+
+        const post = {}
+
+        console.log(post)
+
+        inputs.forEach(({ name, value }) => {
+
+            if (name) {
+                post[name] = value
+            }
+        })
+
+        await newUserInfo(post)
+        await renderUserInfo()
+    })
+
+    return formulario
+}

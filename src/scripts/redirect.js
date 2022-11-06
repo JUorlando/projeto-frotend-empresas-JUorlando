@@ -11,7 +11,6 @@ export function buttonHome () {
             console.log("click")
         })
     })
-    console.log(home)
 }
 
 export function buttonLogin () {

@@ -1,5 +1,6 @@
-import { renderSelect, renderSelectAdmin } from "./render.js";
+import { renderSelectAdmin } from "./render.js";
 import { getDepartaments, getDepartamentsAll } from "./request.js";
+import { renderSelect } from "./renderHome.js";
 
 export async function filterEvent() {
 
@@ -19,7 +20,7 @@ export async function filterEvent() {
 
         if (filter === "Selecionar Departamento") {
 
-            renderSelect(getAll)
+            renderSelect()
 
         } else {
 

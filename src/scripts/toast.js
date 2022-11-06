@@ -1,30 +1,23 @@
-export function toast (title) {
+export function toast (title, message) {
 
     const body = document.querySelector(".container")
 
     const container = document.createElement("div")
     container.classList.add("toast-container")
-    
-    const image = document.createElement("img")
 
     if(title == "Sucesso!"){
-
         container.classList.add("sucesstoast")
-
-        image.src = "../../src/img/toastok.png"
-
-    }  else {
-
-        container.classList.add("sucesstoast")
-
-        image.src = "../../src/img/toasterror.png"
-
-    }
+    } 
 
     const textContainer = document.createElement("div")
 
+    const h3 = document.createElement("h3")
+    h3.innerText = title
 
-    textContainer.append(image)
+    const span = document.createElement("span")
+    span.innerText = message
+
+    textContainer.append(h3, span)
 
     container.append(textContainer)
 

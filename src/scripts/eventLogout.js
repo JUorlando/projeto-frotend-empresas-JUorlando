@@ -7,11 +7,9 @@ export function logout () {
 
         event.preventDefault()
     
-        localStorage.removeItem("UsersData")
         localStorage.removeItem("userToken")
         localStorage.removeItem("typeUser")
-        localStorage.removeItem("dataCompany")
-        localStorage.removeItem("AllDepartaments")
+   
 
 
         window.location.assign("../../index.html")

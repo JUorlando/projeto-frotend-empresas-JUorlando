@@ -1,21 +1,35 @@
 import { logout } from "../../src/scripts/eventLogout.js";
 import { eventCreat } from "../../src/scripts/events.js";
 import { filterEventCompany } from "../../src/scripts/filter.js";
-import { modalCreat, openModal } from "../../src/scripts/modal.js";
-import { renderSelect, renderSelectCompanyModal} from "../../src/scripts/render.js"
+import { renderSelectAdmin, renderSelectCompany, renderSelectCompanyModal, renderSelectUserModal, renderSelectUsers } from "../../src/scripts/render.js";
 
 filterEventCompany()
 
-openModal()
-
-modalCreat()
-
 logout()
 
-await renderCreat()
+await eventCreat()
+
+await renderSelectAdmin()
+
+await renderSelectCompany()
 
 await renderSelectCompanyModal()
 
-eventCreat()
+await renderSelectUsers()
 
-await renderSelect()
+await renderSelectUserModal()
+
+const button = document.querySelector(".btn-open")
+    
+const modal = document.querySelector(".dialog-1")
+
+const buttonClose = document.querySelector(".close-modal")
+
+button.addEventListener("click", () => {
+    modal.showModal()
+})
+
+buttonClose.addEventListener("click", () => {
+
+    modal.close()
+})

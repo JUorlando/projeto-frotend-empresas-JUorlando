@@ -1,4 +1,4 @@
-import { creatDepartment, getCadastro, getLogin } from "./request.js"
+import { creatDepartment, getCadastro, getLogin, hire } from "./request.js"
 
 export function eventCadastro () {
 
@@ -60,4 +60,26 @@ export async function eventCreat () {
     })
 }
 
-eventCreat()
+export async function eventHire () {
+
+    const local = document.querySelector(".form-hire")
+
+    local.addEventListener("submit", async (event) => {
+
+        event.preventDefault()
+
+        console.log(event.target[1].id)
+
+        const body = {
+
+            user_uuid:event.target[0].value,
+            department_uuid:event.target[1].id
+ 
+  
+        }
+        await hire(body)
+
+    })
+}
+
+eventHire()

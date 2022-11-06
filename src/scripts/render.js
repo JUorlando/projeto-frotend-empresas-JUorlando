@@ -1,38 +1,9 @@
 import { editPost, deleteForm, editUser, deleteUser, acessForm } from "../../src/scripts/form.js"
 import { openModal, openModal2 } from "./modal.js";
-import { getDepartaments, getDepartamentsAll, getUsers, getUsersOutOfWork } from "./request.js";
+import { getDepartamentsAll, getUsers, getUsersOutOfWork, getDepartaments, dismiss } from "./request.js";
+import { toast } from "./toast.js";
 
-export async function renderSelect () {
-
-    const department = await getDepartaments()
-
-    console.log(department)
-
-    department.forEach(element => {
-
-        const tagUl = document.querySelector(".ul-cards")
-
-        let tagLi = document.createElement("li")
-        let tagName = document.createElement("h2")
-        let tagHours = document.createElement("p")
-        let tagDescription = document.createElement("p")
-
-        tagLi.classList.add("li-card")
-        tagName.classList.add("h2-card")
-        tagHours.classList.add("p-card")
-        tagDescription.classList.add("setor-card")
-
-        tagName.innerText = element.name
-        tagHours.innerText = element.opening_hours
-        tagDescription.innerText = element.sectors.description
-
-        tagLi.append(tagName, tagHours, tagDescription)
-        tagUl.append(tagLi)
-        
-    });
-}
-
-export async function renderSelectCompany () {
+export async function renderSelectCompany() {
 
     const department = await getDepartamentsAll(localStorage.getItem("userToken"))
 
@@ -48,15 +19,13 @@ export async function renderSelectCompany () {
         tagOption.value = element.companies.name
 
         tagSelect.append(tagOption)
-        
+
     });
 }
 
-await renderSelectCompany()
+export async function renderSelectCompanyModal() {
 
-export async function renderSelectCompanyModal () {
-
-    const department = await getDepartaments(localStorage.getItem("userToken"))
+    const department = await getDepartaments()
 
     department.forEach(element => {
 
@@ -70,15 +39,15 @@ export async function renderSelectCompanyModal () {
         tagOption.value = element.uuid
 
         tagSelect.append(tagOption)
-        
+
     });
 }
 
-await renderSelectCompanyModal()
-
-export async function renderSelectUserModal () {
+export async function renderSelectUserModal() {
 
     const users = await getUsersOutOfWork(localStorage.getItem("userToken"))
+
+    console.log(users)
 
     users.forEach(element => {
 
@@ -88,29 +57,15 @@ export async function renderSelectUserModal () {
 
         tagOption.classList.add("options")
 
-        // const buttonHire = document.querySelector(".btn-hire")
-
-        // buttonHire.addEventListener("click", (event) => {
-    
-        //     event.preventDefault()
-
-        //     const contratando = formHire(element.username, element.professional_level, element.name, element.department_uuid, element.uuid)
-
-        //     openModal3(contratando) 
-            
-        // })
-
         tagOption.innerText = element.username
-        tagOption.value = element.username
+        tagOption.value = element.uuid
 
         tagSelect.append(tagOption)
-        
+
     });
 }
 
-renderSelectUserModal()
-
-export async function renderSelectAdmin () {
+export async function renderSelectAdmin() {
 
     const department = await getDepartamentsAll(localStorage.getItem("userToken"))
 
@@ -140,14 +95,71 @@ export async function renderSelectAdmin () {
         tagEdit.classList.add("buttons-edit")
         tagDelete.classList.add("buttons-delete")
 
-        tagEye.addEventListener("click", (event) => {
+        tagEye.id = element.uuid
+
+        tagEye.addEventListener("click", async (event) => {
+
 
             event.preventDefault()
 
             modal.showModal()
 
+
             const formAcess = acessForm(element.name, element.description, element.companies.name, element.uuid)
             openModal2(formAcess)
+
+            const btnHire = document.querySelector(".btn-hire")
+
+            btnHire.id = tagEye.id
+
+
+            const users = await getUsers(localStorage.getItem("userToken"))
+
+            const tagUl = document.querySelector(".ul-cards-users-2")
+
+            users.forEach(elt => {
+
+                if (elt.department_uuid === btnHire.id) {
+
+
+                    let tagLi = document.createElement("li")
+                    let tagDiv = document.createElement("div")
+                    let tagName = document.createElement("h2")
+                    let tagDescription = document.createElement("p")
+                    let tagCompany = document.createElement("p")
+                    let tagDemitir = document.createElement("button")
+
+                    tagLi.classList = "li-card-demitir"
+                    tagDiv.classList = "div-card-demitir"
+                    tagName.classList = "name-card-demitir"
+                    tagDescription.classList = "descrip-card-demitir"
+                    tagCompany.classList = "company-card-demitir"
+                    tagDemitir.classList = "button-card-demitir"
+
+                    tagName.innerText = elt.username
+                    tagCompany.innerText = element.companies.name
+                    tagDescription.innerText = element.description
+
+                    tagDemitir.innerText = "Demitir"
+
+                    tagDemitir.id = elt.uuid
+
+                    tagDemitir.addEventListener("click", () => {
+
+                        dismiss(elt.uuid)
+
+                        toast("Sucesso!", "Funcionário demitido.")
+                    })
+
+                    tagDiv.append(tagName, tagDescription, tagCompany)
+                    tagLi.append(tagDiv, tagDemitir)
+                    tagUl.append(tagLi)
+
+                }
+
+
+            });
+
         })
 
         buttonClose.addEventListener("click", () => {
@@ -163,7 +175,7 @@ export async function renderSelectAdmin () {
             openModal(formEdit)
         })
 
-        tagDelete.addEventListener("click",(event) => {
+        tagDelete.addEventListener("click", (event) => {
 
             event.preventDefault()
 
@@ -178,13 +190,11 @@ export async function renderSelectAdmin () {
         tagForm.append(tagEye, tagEdit, tagDelete)
         tagLi.append(tagName, tagDescription, tagCompany, tagForm)
         tagUl.append(tagLi)
-        
+
     });
 }
 
-await renderSelectAdmin()
-
-export async function renderSelectUsers () {
+export async function renderSelectUsers() {
 
     const users = await getUsers(localStorage.getItem("userToken"))
 
@@ -233,27 +243,6 @@ export async function renderSelectUsers () {
         tagForm.append(tagEdit, tagDelete)
         tagLi.append(tagName, tagDescription, tagCompany, tagForm)
         tagUl.append(tagLi)
-        
+
     });
 }
-
-await renderSelectUsers()
-
-export async function renderHire () {
-
-    const users = await getUsersOutOfWork(localStorage.getItem("userToken"))
-
-    users.forEach(element => {
-        
-    });
-
-    const department = await getDepartamentsAll(localStorage.getItem("userToken"))
-
-    department.forEach(elt => {
-        
-    });
-
-
-}
-
-renderHire()

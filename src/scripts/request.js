@@ -1,5 +1,4 @@
-import { getLocalStorageToken } from "./localSotrage.js"
-import { renderSelect, renderSelectAdmin, renderSelectUsers } from "./render.js"
+import { renderSelectAdmin } from "./render.js"
 import { toast } from "./toast.js"
 
 const baseUrl = "http://localhost:6278/"
@@ -43,7 +42,7 @@ export async function getCadastro(body) {
 
             const response = await request.json()
 
-            toast("Sucesso!")
+            toast("Sucesso!", "Cadastro feito com sucesso!")
 
             setTimeout(() => {
 
@@ -54,7 +53,7 @@ export async function getCadastro(body) {
             }, 4000)
         } else {
 
-            toast("Erro!")
+            toast("Erro!", "Usuário ou Senha inválidos.")
         }
 
     }
@@ -86,14 +85,14 @@ export async function getLogin(body) {
 
             getAdmAuth(response.token)
 
-            toast("Sucesso!")
+            toast("Sucesso!", "Login feito com sucesso!")
 
             setTimeout(() => {
 
             }, 4000)
         } else {
 
-            toast("Erro!")
+            toast("Erro!", "Usuário ou Senha inválidos.")
         }
     }
     catch (err) {
@@ -115,9 +114,7 @@ export async function getAdmAuth(token) {
         .then(res => {
             if (res.ok) {
                 return res.json()
-            } else {
-                return toast("Erro!")
-            }
+            } 
         })
         .then(res => {
             if (res.is_admin == true) {
@@ -275,8 +272,6 @@ export async function deleteUsers(id) {
 
 export async function creatDepartment (body) {
 
-    console.log(body)
-
     try {
 
         const request = await fetch(`${baseUrl}departments`, {
@@ -313,6 +308,115 @@ export async function hire (body) {
                 "Authorization": `Bearer ${localStorage.getItem("userToken")}`,
             },
             body: JSON.stringify(body)
+        })
+
+        if (request.ok) {
+
+            const response = await request.json()
+
+            return response
+
+        }
+    }
+    catch (err) {
+        console.log(err)
+    }
+
+}
+
+export async function getUserInfo() {
+
+    try {
+
+        const request = await fetch("http://localhost:6278/users/profile", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("userToken")}`,
+            },
+
+        })
+
+        if (request.ok) {
+
+            const response = await request.json()
+
+            return response
+
+        }
+    }
+    catch (err) {
+        console.log(err)
+    }
+
+}
+
+export async function newUserInfo(body) {
+
+    console.log(body)
+
+    try {
+
+        const request = await fetch("http://localhost:6278/users", {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("userToken")}`,
+            },
+            body: JSON.stringify(body)
+        })
+
+        if (request.ok) {
+
+            const response = await request.json()
+
+            return response
+
+        }
+    }
+    catch (err) {
+        console.log(err)
+    }
+
+}
+
+export async function dismiss(id) {
+
+    try {
+
+        const request = await fetch(`http://localhost:6278/departments/dismiss/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("userToken")}`,
+            },
+        })
+
+        if (request.ok) {
+
+            const response = await request.json()
+
+            return response
+
+        }
+    }
+    catch (err) {
+        console.log(err)
+    }
+
+}
+
+export async function getCoWorks() {
+
+    try {
+
+        const request = await fetch("http://localhost:6278/users/departments/coworkers", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("userToken")}`,
+            },
+
         })
 
         if (request.ok) {
