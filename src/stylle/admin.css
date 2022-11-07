@@ -280,7 +280,22 @@
     padding-top: 20px;
     list-style: none;
     overflow: scroll;
+    overflow-x: hidden;
 }
+
+.ul-cards-admin::-webkit-scrollbar {
+    width: 12px;               
+  }
+  
+  .ul-cards-admin::-webkit-scrollbar-track {
+    background: #fff;        
+  }
+  
+  .ul-cards-admin::-webkit-scrollbar-thumb {
+    background-color: #4200FF;    
+    border-radius: 20px;       
+    border: 3px solid #fff;  
+  }
 
 .li-card-admin{
     width: 289px;
@@ -351,7 +366,22 @@
     background-color: #F8F8F8;
     list-style: none;
     overflow: scroll;
+    overflow-x: hidden;
 }
+
+.ul-cards-users::-webkit-scrollbar {
+    width: 12px;               
+  }
+  
+  .ul-cards-users::-webkit-scrollbar-track {
+    background: #fff;        
+  }
+  
+  .ul-cards-users::-webkit-scrollbar-thumb {
+    background-color: #4200FF;    
+    border-radius: 20px;       
+    border: 3px solid #fff;  
+  }
 
 .li-card-users{
     width: 289px;
@@ -403,26 +433,29 @@
 }
 
 .form-modal-inputs-acess{
-    width: 50%;
+    width: 95%;
     height: 300px;
+    display: flex;
 }
 
 .formbase{
     width: 100%;
     height: 100%;
     position: relative;
-    top: 30px;
+    /* top: 30px; */
+    right: 340px;
 }
 
 .form-hire{
     width: 50%;
     height: 100px;
-    position: relative;
-    left: 300px;
-    bottom: 58px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    position: relative;
+    left: 295px;
+    /* top: 69px; */
+    padding-top: 69px;
 }
 
 .select-usuario{
@@ -446,16 +479,33 @@
 }
 
 .ul-cards-users-2{
+    width: 95%;
     display: flex;
     justify-content: space-around;
     background-color: #F8F8F8;
     list-style: none;
     overflow: scroll;
+    overflow-y: hidden;
 }
 
+.ul-cards-users-2::-webkit-scrollbar {
+    width: 12px;               
+  }
+  
+  .ul-cards-users-2::-webkit-scrollbar-track {
+    background: #fff;        
+  }
+  
+  .ul-cards-users-2::-webkit-scrollbar-thumb {
+    background-color: #4200FF;    
+    border-radius: 20px;       
+    border: 3px solid #fff;  
+  }
+
 .li-card-demitir{
-    width: 289px;
+    width: 400px;
     height: 196px;
+    font-size: small;
     background-color: #fff;
     margin: 20px;
     border-bottom: solid 1px #4200ff;
