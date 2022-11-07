@@ -195,51 +195,70 @@ export async function renderSelectUsers() {
 
     const users = await getUsers(localStorage.getItem("userToken"))
 
-    users.forEach(element => {
 
-        const tagUl = document.querySelector(".ul-cards-users")
+    users.forEach(async element => {
 
-        let tagLi = document.createElement("li")
-        let tagName = document.createElement("h2")
-        let tagDescription = document.createElement("p")
-        let tagCompany = document.createElement("p")
-        let tagForm = document.createElement("form")
-        let tagEdit = document.createElement("button")
-        let tagDelete = document.createElement("button")
+        if (element.is_admin === false) {
 
-        tagLi.classList.add("li-card-users")
-        tagName.classList.add("h2-card-users")
-        tagCompany.classList.add("p-card-users")
-        tagDescription.classList.add("setor-card-users")
-        tagForm.classList.add("form-buttons")
-        tagEdit.classList.add("buttons-edit")
-        tagDelete.classList.add("buttons-delete")
+            
+            const tagUl = document.querySelector(".ul-cards-users")
+            
+            let tagLi = document.createElement("li")
+            let tagName = document.createElement("h2")
+            let tagDescription = document.createElement("p")
+            let tagCompany = document.createElement("p")
+            let tagForm = document.createElement("form")
+            let tagEdit = document.createElement("button")
+            let tagDelete = document.createElement("button")
+            
+            tagLi.classList.add("li-card-users")
+            tagName.classList.add("h2-card-users")
+                tagCompany.classList.add("p-card-users")
+                tagDescription.classList.add("setor-card-users")
+                tagForm.classList.add("form-buttons")
+                tagEdit.classList.add("buttons-edit")
+                tagDelete.classList.add("buttons-delete")
+                
+                tagEdit.addEventListener("click", (event) => {
+                    
+                    event.preventDefault()
+                    
+                    const editando = editUser(element.kind_of_work, element.professional_level, element.uuid)
+                    openModal(editando)
+                })
+                
+                tagDelete.addEventListener("click", (event) => {
 
-        tagEdit.addEventListener("click", (event) => {
+                    event.preventDefault()
+                    
+                    const deleteForm = deleteUser(element.username, element.uuid)
+                    openModal(deleteForm)
+                })
+                
+                tagEdit.type = "button"
+                
+                tagName.innerText = element.username
+                tagDescription.innerText = element.professional_level
+                
+                tagName.id = element.department_uuid
+                
+                const department = await getDepartamentsAll(localStorage.getItem("userToken"))
+    
+                department.forEach(async elt => {
 
-            event.preventDefault()
+                if (tagName.id === elt.uuid) {
+                    tagCompany.innerText = elt.companies.name
+                }
 
-            const editando = editUser(element.kind_of_work, element.professional_level, element.uuid)
-            openModal(editando)
-        })
+                tagForm.append(tagEdit, tagDelete)
+                tagLi.append(tagName, tagDescription, tagCompany, tagForm)
+                tagUl.append(tagLi)
 
-        tagDelete.addEventListener("click", (event) => {
+            });
 
-            event.preventDefault()
+        }
 
-            const deleteForm = deleteUser(element.username, element.uuid)
-            openModal(deleteForm)
-        })
 
-        tagEdit.type = "button"
+    })
 
-        tagName.innerText = element.username
-        tagCompany.innerText = element.name
-        tagDescription.innerText = element.professional_level
-
-        tagForm.append(tagEdit, tagDelete)
-        tagLi.append(tagName, tagDescription, tagCompany, tagForm)
-        tagUl.append(tagLi)
-
-    });
 }
