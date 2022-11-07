@@ -1,18 +1,17 @@
-import { eventCadastro } from "../../src/scripts/events.js";
-import { getCadastro } from "../../src/scripts/request.js";
+import { eventCadastro } from "../../src/scripts/eventCadastro.js"
 
 eventCadastro()
 
-const login = document.querySelector(".btn-login-cadastro")
-
-login.addEventListener("click", () => {
-
-    window.location.assign("../../pages/login/login.html")
-})
-
-const home = document.querySelectorAll(".btn-home-cadastro")
+const home = document.querySelector(".btn-home-cadastro")
 
 home.addEventListener("click", () => {
+
+    window.location.assign("../../index.html")
+})
+
+const i = document.querySelector(".btn-retornar")
+
+i.addEventListener("click", () => {
 
     window.location.assign("../../index.html")
 })

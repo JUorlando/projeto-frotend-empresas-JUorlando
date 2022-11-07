@@ -299,6 +299,8 @@ export async function creatDepartment (body) {
 
 export async function hire (body) {
 
+    console.log(body)
+
     try {
 
         const request = await fetch("http://localhost:6278/departments/hire/", {

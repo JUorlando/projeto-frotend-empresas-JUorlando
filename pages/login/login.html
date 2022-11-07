@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../src/stylle/login.css">
+    <link rel="stylesheet" href="../../src/stylle/toast.css">
     <script defer type="module" src="./login.js"></script>
-    <link rel="stylesheet" href="../../src/stylle/home.css">
     <title>Pagina de Login</title>
 </head>
 <body class="container">
@@ -22,16 +28,16 @@
             </div>
         </div>
     </header>
-    <main>
-        <div>
-            <h1>Login</h1>
-            <p>Preencha todos os campos para realizar o login</p>
+    <main class="app">
+        <div class="cadastro-div">
+            <h1 class="title">Login</h1>
+            <p class="text">Preencha todos os campos para realizar o login</p>
             <form class="form-inputs-login">
-                <input id="email" type="email" placeholder="Seu e-mail">
-                <input id="password" type="password" placeholder="Sua senha">
-                <button>Login</button>
+                <input class="input" id="email" type="email" placeholder="Seu e-mail">
+                <input class="input" id="password" type="password" placeholder="Sua senha">
+                <button class="btn-login">Login</button>
                 <p>ou</p>
-                <button type="button" class="btn-cadastro-login">Cadastra-se</button>
+                <button type="button" class="btn-cadastre">Cadastra-se</button>
             </form>
         </div>
     </main>

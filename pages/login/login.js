@@ -1,8 +1,6 @@
-import { eventLogin } from "../../src/scripts/events.js";
-import { getAdmAuth } from "../../src/scripts/request.js";
+import { eventLogin } from "../../src/scripts/eventsLogin.js";
 
 eventLogin()
-await getAdmAuth()
 
 const home = document.querySelector(".btn-home-login")
 
@@ -11,9 +9,9 @@ home.addEventListener("click", () => {
     window.location.assign("../../index.html")
 })
 
-const cadastro = document.querySelectorAll(".btn-cadastro-login")
+const cadastre = document.querySelector(".btn-cadastre")
 
-cadastro.addEventListener("click", () => {
+cadastre.addEventListener("click", () => {
 
     window.location.assign("../../pages/cadastro/cadastro.html")
 })

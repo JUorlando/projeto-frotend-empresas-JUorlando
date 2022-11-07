@@ -1,0 +1,117 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    font-family: 'Inter', sans-serif;
+}
+
+.header {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+
+}
+
+.div-title {
+    width: 203.36px;
+    height: 21.34px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 4px;
+    padding-left: 10px;
+}
+
+.img-header {
+    width: 16px;
+    height: 16px;
+}
+
+.h1 {
+    font-size: medium;
+}
+
+.dropdown {
+    display: none;
+}
+
+.btn-home-cadastro {
+    width: 9.326rem;
+    height: 3rem;
+    background-color: #fff;
+    color: #4200FF;
+    border: solid 1px #4200FF;
+}
+
+.btn-login-cadastro {
+    width: 9.326rem;
+    height: 3rem;
+    background-color: #4200FF;
+    color: #fff;
+    border: solid 1px #fff;
+}
+
+.btn-cadastrar{
+    width: 422px;
+    height: 52px;
+    background-color: #4200FF;
+    color: #fff;
+    border: solid 1px #fff;
+}
+
+.btn-retornar{
+    width: 422px;
+    height: 52px;
+    background-color: #fff;
+    color: #4200FF;
+    border: solid 1px #4200FF;
+}
+
+.app{
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.cadastro-div{
+    width: 506px;
+    height: 519px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+
+.form-inputs{
+    width: 506px;
+    height: 519px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 12px;
+}
+
+.input{
+    width: 422px;
+    height: 52px;
+}
+
+.title{
+    height: 0px;
+    padding-right: 230px;
+}

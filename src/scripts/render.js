@@ -108,18 +108,6 @@ export async function renderSelectAdmin(itens) {
 
             btnHire.id = tagEye.id
 
-            btnHire.addEventListener("click", (event) => {
-
-                event.preventDefault()
-
-                toast("Sucesso!", "Informações salvas com sucesso.")
-
-                setTimeout(() => {
-        
-                    window.location.assign("../../pages/adm/admin.html")
-        
-                }, 500)
-            })
 
 
             const users = await getUsers(localStorage.getItem("userToken"))

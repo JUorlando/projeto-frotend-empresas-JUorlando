@@ -1,0 +1,41 @@
+.toast-container {
+    font-family: "Inter, sans-serif";
+    position: fixed;
+    display: flex;
+    justify-items: flex-end;
+    align-items: center;
+    gap: 10px;
+    width: 300px;
+    padding: 10px;
+    background-color: #fff;
+    color: #4BA036;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px #4BA036;
+    animation: toastIt 4000ms ease-in forwards;
+}
+
+@keyframes toastIt {
+    0%   {right: 30px; bottom:-100px}
+    25%  {right: 30px; bottom:10px}
+    50%  {right: 30px; bottom:10px}
+    100% {right: 30px; bottom:-100px}
+}
+
+.toast-container > img {
+    width: 24px;
+}
+
+.successToast {
+    border: 2px solid var(--gray700);
+    background-color: var(--gray900);
+}
+
+.toast-container > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.toast-container > div > h3 {
+    color: var(--sucess100);
+}
