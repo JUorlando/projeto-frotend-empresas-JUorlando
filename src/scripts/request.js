@@ -126,7 +126,10 @@ export async function getAdmAuth(token) {
             } else {
                 localStorage.removeItem("typeUser", "adm")
                 localStorage.setItem("typeUser", "users")
-                window.location.assign("/pages/users/users.html")
+                setTimeout(() => {
+                    
+                    window.location.assign("/pages/users/users.html")
+                }, 4000)
             }
         })
 
