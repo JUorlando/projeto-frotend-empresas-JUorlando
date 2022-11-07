@@ -38,6 +38,5 @@ button.addEventListener("click", () => {
 buttonClose.addEventListener("click", () => {
 
     modal.close()
-    console.log("click")
 })
 

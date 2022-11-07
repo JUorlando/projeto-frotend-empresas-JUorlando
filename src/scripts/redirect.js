@@ -8,7 +8,6 @@ export function buttonHome () {
         button.addEventListener("click", () => {
     
             window.location.assign("../../index.html")
-            console.log("click")
         })
     })
 }

@@ -67,8 +67,6 @@ export async function getCadastro(body) {
 
 export async function getLogin(body) {
 
-    console.log(body)
-
     try {
         const request = await fetch("http://localhost:6278/auth/login", {
             method: "POST",
@@ -233,8 +231,6 @@ export async function EditDepartments(body, id) {
 
 export async function deleteDepartments(id) {
 
-    console.log(id)
-
     await fetch(`${baseUrl}departments/${id}`, {
         method: "DELETE",
         headers: {
@@ -303,8 +299,6 @@ export async function creatDepartment(body) {
 }
 
 export async function hire(body) {
-
-    console.log(body)
 
     try {
 

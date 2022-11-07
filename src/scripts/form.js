@@ -4,7 +4,7 @@ import { renderUserInfo } from "./renderUser.js"
 import { toast } from "./toast.js"
 
 export const editPost = (description, id) => {
-    console.log(description)
+
     const formulario = document.createElement("form")
     formulario.classList.add("formbase")
 
@@ -52,11 +52,7 @@ export const editPost = (description, id) => {
 
         const inputs = [...event.target]
 
-        console.log(inputs)
-
         const post = {}
-
-        console.log(post)
 
         inputs.forEach(({ name, value }) => {
 
@@ -222,11 +218,7 @@ export const editUser = (modalidade, nivel, id) => {
 
         const inputs = [...event.target]
 
-        console.log(inputs)
-
         const post = {}
-
-        console.log(post)
 
         inputs.forEach(({ name, value }) => {
 
@@ -351,8 +343,6 @@ export const formEditUser = (username, email, password) => {
         const inputs = [...event.target]
 
         const post = {}
-
-        console.log(post)
 
         inputs.forEach(({ name, value }) => {
 
