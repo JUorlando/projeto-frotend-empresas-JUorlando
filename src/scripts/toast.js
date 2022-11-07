@@ -8,11 +8,6 @@ export function toast (title, message) {
     const icon = document.createElement("img")
     icon.alt = `Mensagem de ${title}`
 
-    if(title == "Sucesso!"){
-        container.classList.add("sucesstoast")
-        icon.src = "../../src/img/sucess.png"
-    } 
-
     const textContainer = document.createElement("div")
 
     const h3 = document.createElement("h3")
@@ -20,6 +15,17 @@ export function toast (title, message) {
 
     const span = document.createElement("span")
     span.innerText = message
+
+    if(title == "Sucesso!"){
+        container.classList.add("sucesstoast")
+        icon.src = "../../src/img/sucess.png"
+    } else {
+        container.classList.add("sucesstoast")
+        icon.src = "../../src/img/errorIcon.png"
+        span.classList.add("red-toast")
+        h3.classList.add("red-toast")
+    }
+
 
     textContainer.append(h3, span)
 

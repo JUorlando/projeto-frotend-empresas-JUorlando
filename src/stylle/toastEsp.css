@@ -7,10 +7,7 @@
     gap: 10px;
     width: 300px;
     padding: 10px;
-    background-color: #fff;
-    color: #4BA036;
     border-radius: 8px;
-    box-shadow: 0px 4px 4px #4BA036;
     animation: toastIt 4000ms ease-in forwards;
 }
 
@@ -26,8 +23,8 @@
 }
 
 .successToast {
-    border: 2px solid #fff;
-    background-color: #fff;
+    border: 2px solid var(--gray700);
+    background-color: var(--gray900);
 }
 
 .toast-container > div {
@@ -37,10 +34,5 @@
 }
 
 .toast-container > div > h3 {
-    color: #4BA036;
-}
-
-.red-toast{
-    color: red;
-
+    color: var(--sucess100);
 }

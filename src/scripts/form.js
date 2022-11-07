@@ -147,6 +147,8 @@ export const acessForm = ( name, description, company, id ) => {
     buttonClose.addEventListener("click", () => {
 
         formulario.remove()
+
+        window.location.assign("../../pages/adm/admin.html")
     })
 
     formulario.addEventListener("submit", async (event) => {

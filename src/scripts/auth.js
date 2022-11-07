@@ -9,3 +9,5 @@ export function authentication () {
         getAdmAuth(token)
     }
 }
+
+authentication()

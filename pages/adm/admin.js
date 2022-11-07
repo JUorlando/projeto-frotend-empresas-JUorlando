@@ -1,5 +1,5 @@
 import { logout } from "../../src/scripts/eventLogout.js";
-import { eventCreat } from "../../src/scripts/events.js";
+import { eventCreat, eventHire } from "../../src/scripts/events.js";
 import { filterEventCompany } from "../../src/scripts/filter.js";
 import { renderSelectAdmin, renderSelectCompany, renderSelectCompanyModal, renderSelectUserModal, renderSelectUsers } from "../../src/scripts/render.js";
 import { getDepartamentsAll } from "../../src/scripts/request.js";
@@ -9,6 +9,8 @@ const department = await getDepartamentsAll(localStorage.getItem("userToken"))
 filterEventCompany()
 
 logout()
+
+await eventHire()
 
 await eventCreat()
 

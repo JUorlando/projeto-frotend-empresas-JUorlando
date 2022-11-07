@@ -1,5 +1,6 @@
 import { renderSelectAdmin } from "./render.js"
 import { toast } from "./toast.js"
+import { toastEsp } from "./toastCadastroLogin.js"
 
 const baseUrl = "http://localhost:6278/"
 
@@ -42,7 +43,7 @@ export async function getCadastro(body) {
 
             const response = await request.json()
 
-            toast("Sucesso!", "Cadastro feito com sucesso!")
+            toastEsp("Sucesso!")
 
             setTimeout(() => {
 
@@ -53,7 +54,7 @@ export async function getCadastro(body) {
             }, 4000)
         } else {
 
-            toast("Erro!", "Usuário ou Senha inválidos.")
+            toastEsp("Erro!")
         }
 
     }
@@ -83,16 +84,13 @@ export async function getLogin(body) {
 
             localStorage.setItem("userToken", response.token)
 
+            toast("Sucesso!", "Login realizado com sucesso!")
+
             getAdmAuth(response.token)
 
-            toast("Sucesso!", "Login feito com sucesso!")
-
-            setTimeout(() => {
-
-            }, 4000)
         } else {
 
-            toast("Erro!", "Usuário ou Senha inválidos.")
+            toastEsp("Erro!")
         }
     }
     catch (err) {
@@ -114,13 +112,17 @@ export async function getAdmAuth(token) {
         .then(res => {
             if (res.ok) {
                 return res.json()
-            } 
+            }
         })
         .then(res => {
             if (res.is_admin == true) {
                 localStorage.removeItem("typeUser", "users")
                 localStorage.setItem("typeUser", "adm")
-                window.location.assign("/pages/adm/admin.html")
+                setTimeout(() => {
+
+                    window.location.assign("/pages/adm/admin.html")
+
+                }, 4000)
             } else {
                 localStorage.removeItem("typeUser", "adm")
                 localStorage.setItem("typeUser", "users")
@@ -187,7 +189,7 @@ export async function getUsersOutOfWork() {
 export async function getDepartamentsAll() {
 
 
-    try{
+    try {
 
         const request = await fetch("http://localhost:6278/departments", {
             method: "GET",
@@ -209,7 +211,7 @@ export async function getDepartamentsAll() {
         console.log(err)
     }
 
-    }
+}
 
 export async function EditDepartments(body, id) {
 
@@ -270,7 +272,7 @@ export async function deleteUsers(id) {
         .then(res => console.log(res))
 }
 
-export async function creatDepartment (body) {
+export async function creatDepartment(body) {
 
     try {
 
@@ -297,7 +299,7 @@ export async function creatDepartment (body) {
 
 }
 
-export async function hire (body) {
+export async function hire(body) {
 
     console.log(body)
 
@@ -316,14 +318,24 @@ export async function hire (body) {
 
             const response = await request.json()
 
-            return response
+            toast("Sucesso!", "Funcionário Contratado.")
 
+            setTimeout(() => {
+
+                window.location.assign("../../pages/adm/admin.html")
+
+            }, 1000)
+
+        } else {
+
+            toast("Erro!", "Aconteceu algo inesperado.")
         }
     }
     catch (err) {
-        console.log(err)
-    }
 
+        console.log(err)
+
+    }
 }
 
 export async function getUserInfo() {
@@ -354,8 +366,6 @@ export async function getUserInfo() {
 }
 
 export async function newUserInfo(body) {
-
-    console.log(body)
 
     try {
 
@@ -427,7 +437,7 @@ export async function getCoWorks() {
 
             return response
 
-        } 
+        }
     }
     catch (err) {
         console.log(err)
