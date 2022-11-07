@@ -1,6 +1,6 @@
 import { formEditUser } from "./form.js";
 import { openModal4 } from "./modal.js";
-import { getCoWorks, getUserInfo } from "./request.js";
+import { getCoWorks, getDepartaments, getUserInfo } from "./request.js";
 
 export async function renderUserInfo() {
 
@@ -58,9 +58,12 @@ export async function renderCoworks () {
 
     const cowork = await getCoWorks(localStorage.getItem("userToken"))
 
+    
     const noWork = document.querySelector(".h1-cowork")
+    
+    cowork.forEach( async element => {
 
-    cowork.forEach(element => {
+        const companies = await getDepartaments(localStorage.getItem("userToken"))
 
         const users = element.users
 
@@ -75,7 +78,6 @@ export async function renderCoworks () {
         tagDepartmentName.classList = "department-cowork"
         noWork.classList.add("no-work")
         
-        tagCompanyName.innerText = `${element.name} `
         tagDepartmentName.innerText = ` - ${element.description}`
         
         users.forEach(elt=> {
@@ -92,12 +94,24 @@ export async function renderCoworks () {
             tagPosition.classList = "position-cowork"
     
             tagName.innerText = elt.username
+            tagName.id = element.company_uuid
             tagPosition.innerText = elt.professional_level
+
+            companies.forEach(elx => {
+
+                if(tagName.id === elx.uuid){
+
+                    tagCompanyName.innerText = `${elx.name} `
+                }
+
+
+            
+                tagLi.append(tagName, tagPosition)
+                tagUl.append(tagLi)
+                tagDiv.append(tagCompanyName, tagDepartmentName,)
+                tagSection.append(tagDiv, tagUl)
+            });
     
-            tagLi.append(tagName, tagPosition)
-            tagUl.append(tagLi)
-            tagDiv.append(tagCompanyName, tagDepartmentName,)
-            tagSection.append(tagDiv, tagUl)
         });
 
         
